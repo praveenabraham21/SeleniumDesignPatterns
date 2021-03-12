@@ -32,11 +32,7 @@ public class Decorators {
     private static final Consumer<DashboardPage> guestSelection = (dp) -> dp.selectRole("guest");
 
     //user role pages
-    public static final Consumer<DashboardPage> guestPage =
-            guestSelection.andThen(guestComponentPresence)
-                    .andThen(superUserComponentNotPresent)
-                    .andThen(adminComponentNotPresent);
-
+    public static final Consumer<DashboardPage> guestPage = guestSelection.andThen(guestComponentPresence).andThen(superUserComponentNotPresent).andThen(adminComponentNotPresent);
     public static final Consumer<DashboardPage> superUserPage = superUserSelection.andThen(guestComponentPresence).andThen(adminComponentNotPresent);
     public static final Consumer<DashboardPage> adminUserPage = adminSelection.andThen(adminComponentPresence).andThen(guestComponentPresence).andThen(superUserComponentPresence);
 }
